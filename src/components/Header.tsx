@@ -7,7 +7,7 @@ import { useWallet } from '../WalletContext';
 
 const Header = () => {
     const { handleLogOut } = useDynamicContext();
-    const { isConnected } = useWallet();
+    const { isConnected, disconnect } = useWallet();
 
     return (
         <header className="bg-blue-500 p-4">
@@ -19,7 +19,7 @@ const Header = () => {
                 <div>
                     {isConnected ? (
                         <button
-                            onClick={() => handleLogOut()}
+                            onClick={() => disconnect()}
                             className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
                         >
                             Disconnect
