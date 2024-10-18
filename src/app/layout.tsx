@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { DynamicProvider } from "@/components/providers/DynamicProvider";
 import { WalletProvider } from '../WalletContext';
+import Header from "@/components/Header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
         <DynamicProvider>
           <WalletProvider>
+            <Header />
             {children}
           </WalletProvider>
         </DynamicProvider>
