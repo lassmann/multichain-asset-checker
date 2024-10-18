@@ -1,7 +1,7 @@
 /* c8 ignore start */
 'use client';
 
-import { ComponentProps, PropsWithChildren, useContext } from 'react';
+import { ComponentProps, PropsWithChildren } from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createConfig, WagmiProvider } from 'wagmi';
