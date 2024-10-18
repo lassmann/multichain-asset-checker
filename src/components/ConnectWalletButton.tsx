@@ -8,14 +8,14 @@ const ConnectWalletButton = () => {
     };
 
     return (
-        <button
+        <div
             className="bg-white text-blue-500 px-4 py-2 rounded-md hover:bg-blue-100 transition-colors"
             onClick={handleConnectWallet}
         >
             <DynamicConnectButton>
                 Connect Wallet
             </DynamicConnectButton>
-        </button>
+        </div>
     );
 };
 

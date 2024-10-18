@@ -13,7 +13,6 @@ import { EthereumWalletConnectors } from '@dynamic-labs/ethereum';
 import { SolanaWalletConnectors } from '@dynamic-labs/solana';
 
 import { ENV } from '@/constants';
-// import { UIContext } from '@/components/providers/UIProvider';
 
 const config = createConfig({
   chains: [mainnet],

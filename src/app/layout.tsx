@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
 import { DynamicProvider } from "@/components/providers/DynamicProvider";
+import { WalletProvider } from '../WalletContext';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <DynamicProvider>
-          {children}
+          <WalletProvider>
+            {children}
+          </WalletProvider>
         </DynamicProvider>
       </body>
     </html>
