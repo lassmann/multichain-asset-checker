@@ -1,7 +1,9 @@
-import React from 'react';
-import { useWallet } from '../WalletContext';
+'use client';
 
-const ProfilePage: React.FC = () => {
+import React from 'react';
+import { useWallet } from '../../WalletContext';
+
+const Profile: React.FC = () => {
     const { isConnected, connectedWallets } = useWallet();
 
     if (!isConnected) {
@@ -16,11 +18,10 @@ const ProfilePage: React.FC = () => {
                     <h2>Wallet {index + 1}</h2>
                     <p>Address: {wallet.address}</p>
                     <p>Chain: {wallet.chain}</p>
-                    {/* <p>Connector: {wallet.connector}</p> */}
                 </div>
             ))}
         </div>
     );
 };
 
-export default ProfilePage;
+export default Profile;

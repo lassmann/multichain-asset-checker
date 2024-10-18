@@ -14,7 +14,7 @@ const Header = () => {
             <nav className="container mx-auto flex justify-between items-center">
                 <div>
                     <Link href="/" className="text-white mr-4">Home</Link>
-                    <Link href="/profile" className="text-white">Profile</Link>
+                    <Link href="/portfolio" className="text-white">Portfolio</Link>
                 </div>
                 <div>
                     {isConnected ? (
