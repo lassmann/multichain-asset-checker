@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import ConnectWalletButton from './ConnectWalletButton';
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core';
-import { useWallet } from '../WalletContext';
+import { useWallet } from '../contexts/WalletContext';
+import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
 
 const Header = () => {
     const { handleLogOut } = useDynamicContext();
@@ -17,16 +18,7 @@ const Header = () => {
                     <Link href="/portfolio" className="text-white">Portfolio</Link>
                 </div>
                 <div>
-                    {isConnected ? (
-                        <button
-                            onClick={() => disconnect()}
-                            className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-                        >
-                            Disconnect
-                        </button>
-                    ) : (
-                        <ConnectWalletButton />
-                    )}
+                    <DynamicWidget />
                 </div>
             </nav>
         </header>

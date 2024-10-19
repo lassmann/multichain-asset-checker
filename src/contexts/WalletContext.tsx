@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useDynamicContext, Wallet, useUserWallets, UserProfile } from '@dynamic-labs/sdk-react-core';
+import { useDynamicContext, Wallet, useUserWallets, UserProfile, useIsLoggedIn } from '@dynamic-labs/sdk-react-core';
 import { useRouter } from 'next/navigation';
 
 interface WalletContextType {
@@ -15,7 +15,8 @@ interface WalletContextType {
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
 
 export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const { primaryWallet, user } = useDynamicContext();
+    const { primaryWallet, user, setShowAuthFlow, handleLogOut } = useDynamicContext();
+    const isLoggedIn = useIsLoggedIn();
     const userWallets = useUserWallets();
     const [isConnected, setIsConnected] = useState(false);
     const [dynamicUser, setDynamicUser] = useState<UserProfile | undefined>();
@@ -25,19 +26,21 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     useEffect(() => {
         setConnectedWallets(userWallets);
         setDynamicUser(user);
-    }, [primaryWallet, user]);
+    }, [primaryWallet, user, userWallets]);
 
     useEffect(() => {
-        setIsConnected(!!primaryWallet?.address);
-    }, [primaryWallet]);
+        setIsConnected(!!isLoggedIn);
+    }, [isLoggedIn]);
 
     const connect = () => {
-        // Implement connect logic here
+        setShowAuthFlow(true)
     };
 
     const disconnect = () => {
         setIsConnected(false);
         setConnectedWallets([]);
+        handleLogOut();
+        localStorage.clear();
         router.push('/');
     };
 
