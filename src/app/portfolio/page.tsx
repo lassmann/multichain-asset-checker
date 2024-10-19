@@ -6,7 +6,7 @@ import { getTokenBalances } from '../../../services/covalentService';
 import { Chain } from '@covalenthq/client-sdk';
 
 const Profile: React.FC = () => {
-    const { isConnected, connectedWallets } = useWallet();
+    const { isConnected, connectedWallets, dynamicUser } = useWallet();
 
     if (!isConnected) {
         return <div>Please connect your wallet to view your profile.</div>;
@@ -32,6 +32,7 @@ const Profile: React.FC = () => {
     return (
         <div>
             <h1>Your Wallet Profile</h1>
+            Userid: {dynamicUser?.userId}
             {connectedWallets.map((wallet, index) => (
                 <div key={index}>
                     <h2>Wallet {index + 1}</h2>
