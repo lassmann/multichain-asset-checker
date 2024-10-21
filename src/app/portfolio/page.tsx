@@ -16,7 +16,6 @@ const sumAndSortAssets = (data: any) => {
             const assetList = networks[network].assetList || [];
             assetList.forEach((asset: any) => {
                 const ticker = asset.contract_ticker_symbol;
-                const assetKey = `${ticker}-${network}-${address}`;
 
                 if (assetSums[ticker]) {
                     assetSums[ticker] += asset.quote;
@@ -76,7 +75,6 @@ const Profile: React.FC = () => {
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            // Verificar si el click fue fuera del dropdown, pero también fuera del botón
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setOpenOptionsIndex(null);
             }
@@ -95,7 +93,6 @@ const Profile: React.FC = () => {
 
     const handleOptionClick = (option: string, detail: any) => {
         console.log(`Selected ${option} for:`, detail);
-        // Implement the logic for each option (Swap, Bridge, Stake) here
         setOpenOptionsIndex(null);
     };
 

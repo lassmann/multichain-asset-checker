@@ -110,7 +110,6 @@ export const BalanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
                 const storedWalletCount = Object.keys(userData.addresses || {}).length;
                 
                 if (storedWalletCount !== connectedWallets.length) {
-                    // Remove localStorage item and fetch balances again
                     localStorage.removeItem(dynamicUser.userId);
                     fetchAndStoreBalances();
                 } else {
